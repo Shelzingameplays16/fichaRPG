@@ -1,61 +1,105 @@
-@font-face { /* Fonte */
+/* =======================
+   FONTE
+======================= */
+@font-face {
     font-family: 'EnchantedLand';
     src: url('fonts/Enchanted Land.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
+
+/* =======================
+   BASE
+======================= */
 html, body {
     height: 100vh;
     width: 100vw;
-    overflow: hidden; /* impede rolagem */
-}
-body{
-    font-family: EnchantedLand;
     margin: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: EnchantedLand;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    
-   
-}
-.fundo-rotacionado{
-    position:fixed;
-    inset: -500px;
-    background-image: url("images/wood.jpg");
-    background-size: 80%;
-    background-position: center;
-    background-repeat:repeat;
-    transform: rotate(7deg);
-    z-index: -1;
-}
-.livro {
-    display: flex;
-    width: 960px;
-    height: 600px;
-    background: #d8c9a3;
-    border-radius: 5px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.6);
-    border-left:  20px solid rgb(141, 23, 23); 
-    border-right: 20px solid rgb(141, 23, 23);
-    transform: scale(0.90); 
-    transform-origin: center;
-    z-index: 0;
-}
-    
-/* Linha central do livro */
-.pagFundoEsq {
-    border-right: 6px solid rgba(0,0,0,0.15);
 }
 
-/* Paginas fundo */
+/* =======================
+   FUNDO ROTACIONADO
+======================= */
+body::before {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("images/wood.jpg");
+    background-size: 1200px;
+    background-repeat: repeat;
+    transform: rotate(7deg);
+    z-index: -2;
+}
+
+/* Vinheta */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at center,
+        rgba(0,0,0,0) 55%,
+        rgba(0,0,0,0.4) 100%
+    );
+    z-index: -1;
+}
+
+/* =======================
+   LIVRO
+======================= */
+.livro {
+    position: relative;
+    display: flex;
+    width: 860px;
+    height: 550px;
+    background: #d8c9a3;
+    border-radius: 6px;
+    overflow: hidden;
+
+    border-left: 20px solid rgb(141, 23, 23);
+    border-right: 20px solid rgb(141, 23, 23);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.6),
+        -15px 0 30px rgba(0,0,0,0.4),
+        15px 0 30px rgba(0,0,0,0.4);
+
+    z-index: 1;
+}
+
+/* Luz lateral */
+.livro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.15),
+        rgba(182, 30, 30, 0) 30%
+    );
+}
+
+/* =======================
+   PÁGINAS
+======================= */
 .pagFundoEsq,
 .pagFundoDir {
     width: 50%;
     height: 100%;
-    padding: 13px;
+    padding: 27px;
     box-sizing: border-box;
     position: relative;
 
@@ -64,13 +108,42 @@ body{
     background-position: center;
 }
 
+/* Linha central */
+.pagFundoEsq {
+    border-right: 6px solid rgba(0,0,0,0.15);
+}
+
+/* =======================
+   TÍTULO
+======================= */
+.titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 3px 0;
+    border-bottom: 2px solid black;
+    font-size: 26px;
+}
+
+.nivel {
+    padding-right: 40px;
+}
+
+/* =======================
+   IMAGEM PERSONAGEM
+======================= */
 .imagem-container {
     display: flex;
     position: relative;
-    width: 185px;   
-    height: auto;
+    width: 250px;
     justify-content: center;
     align-items: center;
+    height:250px;
+    padding: 0;
+    margin: 0;
 }
 
 .personagem {
@@ -79,56 +152,74 @@ body{
     object-fit: cover;
     border-radius: 15px;
     position: absolute;
-    
 }
 
 .borda {
     position: absolute;
-    inset: 0;         
+    inset: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    
-    
 }
-ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
-}
+/* =======================
+   LISTAS
+======================= */
 .caracteristicas{
+    align-items: center; 
+    justify-content: center; 
+    padding: 5%;
+    width: 200px;
+    margin-top: 0;
+    padding-top: 0;
+
+}
+ul {
+    list-style: none;
+    margin: 5%;
+    padding: 5%;
+    padding-right: 10%;
+    justify-content: center;
     align-items: center;
-   justify-content: center;
-    padding: 8px
-}
-li{
-    font-size: 22px;
-    border-bottom: 2px solid black;
-    width: 190px;
-}
-.li1{
-    font-size: 26px;
-    font-weight: bold;
+    height: 45%;
+    width: 76%;
 }
 
-h1{
-    margin: 3px;
-    border-bottom: solid 2px black;
-    font-size: 26px;
+li {
+    font-size: 115%;
+    width: 100%;
+    padding-left: 7%;
     position: relative;
-   
 }
 
-/* Barras */
-#Barras{
+/* Bullet customizado */
+li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-size: 100%;
+}
+
+/* Títulos da lista */
+.li1 {
+    font-size: 135%;
+    font-weight: bold;
+    border-top: 3px solid black;
+    padding-left: 0;
+}
+
+/* =======================
+   BARRAS DE STATUS
+======================= */
+#Barras {
     margin-top: 20px;
+    
 }
-.status{
-display: flex;
-max-height: 300px;
-justify-content: space-evenly;
 
+.status {
+    display: flex;
+    max-height: 220px;
+    justify-content: space-evenly;
 }
 
 .barra {
@@ -143,12 +234,13 @@ justify-content: space-evenly;
 .label {
     width: 70px;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 24px;
+    padding-bottom: 0;
 }
 
 .barra-container {
     flex: 1;
-    height: 16px;
+    height: 14px;
     background: rgba(0,0,0,0.2);
     border-radius: 8px;
     overflow: hidden;
@@ -156,46 +248,122 @@ justify-content: space-evenly;
 
 .preenchimento {
     height: 100%;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
-/* Cores e porcentagens */
 
-.barra.vida .preenchimento {
-    background: darkred;
-    width: 5%;
-}
+/* Cores */
+.barra.vida .preenchimento { background: #8b0000; width: 85%; }
+.barra.vigor .preenchimento { background: rgba(114, 82, 22, 0.836); width: 75%; }
+.barra.mana .preenchimento { background: purple; width: 20%; }
+.barra.frio .preenchimento { background: blue; width: 60%; }
 
-.barra.vigor .preenchimento {
-    background: rgba(114, 82, 22, 0.836);
-    width: 75%;
-}
-
-.barra.mana .preenchimento {
-    background: purple;
-    width: 20%;
-}
-
-.barra.frio .preenchimento {
-    background: blue;
-    width: 40%;
-}
-.atributos{
+/* =======================
+   ATRIBUTOS
+======================= */
+.atributos {
     display: flex;
-    border: solid 3px black ;
-    border-radius: 40px;
-    width: 40px;
-    height: 40px;
-    align-content: center;
-    justify-content: center;
+    width: 25%;
+    height: 15%;
+    border: 4.5px solid black;
+    border-radius: 50%;
     align-items: center;
+    justify-content: center;
     font-size: 28px;
 }
 
-.icon{
-    display:inline-flex;
-    width: 50px;
-    bottom: 0;
-    right: 0;
+/* Ícone */
+.icon {
     position: absolute;
+    right: 2%;
+    top: 4%;
+    width: 15%
+}
+.icon1 {
+    position: absolute;
+    right: 23%;
+    width: 11%
+}
+.icon2 {
+    position: absolute;
+    right: 2%;
+    width: 15%;
+    top:83.5%;
+}
+/* =======================
+   Condiçoes
+======================= */
+.condiçoes{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+.iconeCondiçoes{
+    width: 10%;
+    position:relative;
+    
+}
+/* =======================
+   Núcleo
+======================= */
+.divPagDir{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+
+}
+.destaque{
+    border-bottom: solid 2px black;
+    width: 175px;
+    margin: 0;
+    padding: 0;
+}
+.pNucleo{
+    margin: 0;
+    padding: 5%;
+    padding-right: 10%;
+    height: 20%;
+}
+.ulN{
+    margin: 0;
+}
+.btn-custom{ 
+background-color: #000000; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    padding: 6px 14px; /* Espaçamento interno */
+    font-size: 20px; /* Tamanho da fonte */
+    border: none; /* Remove borda padrão */
+    border-radius: 8px; /* Bordas arredondadas */
+    cursor: pointer; /* Mãozinha ao passar o mouse */
+    transition: all 0.3s ease; /* Transição suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    position: absolute;
+    bottom: 2.5%;
+    right: 5%;
+    font-family: EnchantedLand;
+}
+
+/* Efeito ao passar o mouse */
+.btn-custom:hover {
+    background-color: #45a049; /* Cor mais escura */
+    transform: translateY(-2px); /* Leve elevação */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito ao clicar */
+.btn-custom:active {
+    transform: translateY(0); /* Volta ao normal */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 500px) {
+    .btn-custom {
+        width: 100%; /* Ocupa toda a largura */
+        font-size: 18px;
+    }
+}
+
 }

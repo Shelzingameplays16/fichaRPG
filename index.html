@@ -10,12 +10,15 @@
 
 <body>
     <div class="livro"> <!-- Livro -->
-    <div class="fundo-rotacionado"></div>
         <div class="pagFundoEsq"> <!-- Página Esquerda -->
            
-
-            <h1>Nome: teste <img class="icon" src="images/iconeEdit.png" alt="icon"></h1>
-
+            
+            <h1 class="titulo">
+                <span>Nome: Jhas'kier D'Vincy Plumadouro</span>
+                <span class="nivel">Nível: 01</span>
+            </h1>
+            <img class="icon" src="images/iconeEdit.png" alt="icon">
+            
             <div class="status"> <!-- Container imagem + características -->
                 <div class="imagem-container">
                     <img class="personagem" src="images/Jhas'kier.png">
@@ -23,15 +26,16 @@
                 </div>  
                 <div class="caracteristicas">
                     <ul >
-                        <li class="li1">Nível: 01</li>
+                      <!--   <li style="font-size: 26px;list-style: none;"><strong>Nível:</strong>  01</li> -->
                         <li>EXP: 50 / 100</li>
-                        <li class="li1">Raça: Ixyd Pavão</li>
-                        <li class="li1">Genéticas:</li>
-                        <li>Raquítico</li>
-                        <li>Inteligente</li>
+                        <li class="li1">Raça:</li>
+                        <li>Ixyd Pavão</li>
                         <li class="li1">Aptidões:</li>
                         <li>Aprendiz</li>
                         <li>Negociante</li>
+                        <li class="li1">Especializoes</li>
+                        <li>Teste</li>
+                        <li>Teste</li>
                     </ul>
                 </div>
 
@@ -39,30 +43,34 @@
 
             <div id="Barras">
                 <div>
-
+                    <img class="icon1" src="images/iconeEdit.png" alt="icon">
                     <div class="barra vida">
-                        <span class="label">Vida</span>
+                        <span class="label"><span style="color: #8b0000;">V</span>ida</span>
                         <div class="barra-container">
                             <div class="preenchimento"></div>
                         </div>
+                        
                     </div>
-
+                    
+                    <img class="icon1" src="images/iconeEdit.png" alt="icon">
                     <div class="barra vigor">
-                        <span class="label">Vigor</span>
+                        <span class="label"><span style="color: rgba(114, 82, 22, 0.836);">V</span>igor</span>
                         <div class="barra-container">
                             <div class="preenchimento"></div>
                         </div>
                     </div>
 
+                    <img class="icon1" src="images/iconeEdit.png" alt="icon">
                     <div class="barra mana">
-                        <span class="label">Mana</span>
+                        <span class="label"><span style="color: purple;">M</span>ana</span>
                         <div class="barra-container">
                             <div class="preenchimento"></div>
                         </div>
                     </div>
 
+                    <img class="icon1" src="images/iconeEdit.png" alt="icon">
                     <div class="barra frio">
-                        <span class="label">Frio</span>
+                        <span class="label"><span style="color: blue;">F</span>rio</span>
                         <div class="barra-container">
                             <div class="preenchimento"></div>
                         </div>
@@ -70,14 +78,42 @@
 
                 </div>
             </div>
+            <img class="icon2" src="images/iconeEdit.png" alt="icon">
+
             <h1>Condições</h1>
+
+            <div class="condiçoes">
+            <img class="iconeCondiçoes" src="images/scar-wound.png" alt="icone">
+            <img class="iconeCondiçoes" src="images/scar-wound.png" alt="icone">
+            <img class="iconeCondiçoes" src="images/scar-wound.png" alt="icone">
+            <img class="iconeCondiçoes" src="images/scar-wound.png" alt="icone">
+            <img class="iconeCondiçoes" src="images/scar-wound.png" alt="icone">
+            </div>
          
         </div> <!-- Fim Página Esquerda -->
 
 
         <div class="pagFundoDir">
-            <h1>Atributos</h1>
+            <h1 class="titulo">Atributos</h1>
+            <img class="icon" src="images/iconeEdit.png" alt="icon">
+            
+            <div class="divPagDir">
+                <div>
+                    <H2 class="destaque">Núcleo</H2>
+                    <p class="pNucleo">Artifíce</p>
+                </div>
+                <div>
+                    <h2 class="destaque">Genéticas</h2>
+                   <ul class="ulN">
+                    <li>Raquitico</li>
+                    <li>Inteligente</li>
+                    <li>Vivaz</li>
+                   </ul>
+                </div>
+            </div>
+
             <p class="atributos">25</p>
+            <button class="btn-custom">Passar Turno</button>
         </div>
     </div> <!-- Fim Livro -->
 
